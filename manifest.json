@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json.schemastore.org/chrome-manifest.json",
+  "manifest_version": 3,
+  "version": "0.0.1",
+  "name": "MAL Airing End Estimator",
+  "description": "Estimates the end date of airing anime on MyAnimeList.",
+  "icons": {
+    "48": "images/extension_48.png"
+  },
+  "author": "Rettend",
+  "content_scripts": [
+    {
+      "matches": [
+        "https://myanimelist.net/anime/*"
+      ],
+      "js": [
+        "index.ts"
+      ]
+    }
+  ]
+}

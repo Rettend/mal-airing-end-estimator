@@ -1,0 +1,26 @@
+{
+  "name": "mal-airing-end-estimator",
+  "type": "module",
+  "version": "0.0.1",
+  "private": true,
+  "packageManager": "bun@1.2.19",
+  "description": "Estimates the end date of airing anime on MyAnimeList.",
+  "author": "Rettend",
+  "license": "MIT",
+  "scripts": {
+    "dev": "extension dev",
+    "start": "extension start",
+    "build": "extension build",
+    "lint": "eslint . --fix"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@antfu/eslint-config": "^5.0.0",
+    "eslint": "^9.32.0",
+    "extension": "^2.0.0-rc.38",
+    "typescript": "^5.8.3"
+  },
+  "trustedDependencies": [
+    "spawn-sync"
+  ]
+}
