@@ -96,7 +96,7 @@ function run() {
     return
 
   const airedInfo = getInfoValue('Aired:')
-  if (!airedInfo || !airedInfo.value.includes(' to ?'))
+  if (!airedInfo)
     return
 
   const startDateStr = airedInfo.value.split(' to ')[0].trim()
@@ -104,18 +104,20 @@ function run() {
   if (Number.isNaN(startDate.getTime()))
     return
 
-  const endDate = new Date(startDate)
-  endDate.setDate(endDate.getDate() + (numEpisodes - 1) * 7)
+  if (airedInfo.value.includes(' to ?')) {
+    const endDate = new Date(startDate)
+    endDate.setDate(endDate.getDate() + (numEpisodes - 1) * 7)
 
-  const endDateFormatted = endDate.toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'short',
-    day: 'numeric',
-  })
+    const endDateFormatted = endDate.toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric',
+    })
 
-  const originalText = airedInfo.element.innerHTML
-  const updatedText = originalText.replace('?', `~ ${endDateFormatted}`)
-  airedInfo.element.innerHTML = updatedText
+    const originalText = airedInfo.element.innerHTML
+    const updatedText = originalText.replace('?', `~ ${endDateFormatted}`)
+    airedInfo.element.innerHTML = updatedText
+  }
 
   const broadcastInfo = getInfoValue('Broadcast:')
   const broadcastParsed = broadcastInfo ? parseBroadcast(broadcastInfo.value) : null
